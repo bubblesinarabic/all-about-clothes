@@ -422,31 +422,31 @@
           <h2>ثانياً: البطاقات التعليمية</h2>
           <button class="back-menu-btn" onclick="goToFirstCard()"><i data-lucide="home" style="width:18px; height:18px;"></i> القائمة</button>
         </div>
-        <p class="instruction">اضغط على البطاقة لتعرف معنى قطعة الملابس بالإنجليزية. (10 كلمات)</p>
+        <p class="instruction">اضغط على البطاقة لتعرف معنى قطعة الملابس بالإنجليزية. (7 كلمات)</p>
         
         <div class="flashcard-container" onclick="flipCard(this)">
           <div class="flashcard" id="fc-element">
-            <div class="flashcard-face flashcard-front" id="fc-front">قَمِيص</div>
+            <div class="flashcard-face flashcard-front" id="fc-front">غُرْفَةُ النَّوْم</div>
             <div class="flashcard-face flashcard-back">
               <div id="fc-icon-container"></div>
-              <div id="fc-back" style="font-weight: bold; padding: 0 20px;">Tall / Long</div>
+              <div id="fc-back" style="font-weight: bold; padding: 0 20px;">Bedroom</div>
             </div>
           </div>
         </div>
         
         <div class="fc-nav">
           <button class="fc-btn" onclick="prevFlashcard()">السابق</button>
-          <span id="fc-counter" style="font-size: 18px; font-weight: bold; align-self: center;">1 / 10</span>
+          <span id="fc-counter" style="font-size: 18px; font-weight: bold; align-self: center;">1 / 7</span>
           <button class="fc-btn" onclick="nextFlashcard()">التالي</button>
         </div>
       </div>
 
       <div class="slide" id="slide-4">
         <div class="slide-header">
-          <h2>ثالثاً: ترتيب الحروف (12 نقطة)</h2>
+          <h2>ثالثاً: ترتيب الحروف (7 نقاط)</h2>
           <button class="back-menu-btn" onclick="goToFirstCard()"><i data-lucide="home" style="width:18px; height:18px;"></i> القائمة</button>
         </div>
-        <div class="spell-progress" id="spell-progress">الكلمة 1 من 12</div>
+        <div class="spell-progress" id="spell-progress">الكلمة 1 من 7</div>
         <p class="instruction" id="spell-clue">اضغط على الحروف بالترتيب الصحيح لكتابة الكلمة.</p>
         
         <div class="answer-slots" id="letter-answer-box"></div>
@@ -467,42 +467,42 @@
         <p class="instruction">اسحب الكلمة المناسبة لتكملة الجملة:</p>
 
         <div class="word-bank" id="fill-word-bank">
+          <div class="fill-draggable" draggable="true" data-word="ghurfatnawm">غُرْفَةُ النَّوْم</div>
           <div class="fill-draggable" draggable="true" data-word="qamees">قَمِيص</div>
+          <div class="fill-draggable" draggable="true" data-word="bantaloon">بَنْطَلُون</div>
           <div class="fill-draggable" draggable="true" data-word="fustaan">فُسْتَان</div>
-          <div class="fill-draggable" draggable="true" data-word="mitaf">مِعْطَف</div>
           <div class="fill-draggable" draggable="true" data-word="hithaa">حِذَاء</div>
-          <div class="fill-draggable" draggable="true" data-word="qubbaa">قُبَّعَة</div>
         </div>
 
         <div class="sentence-container">
+          <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/bedroom.png" class="sentence-img" alt="غرفة النوم">
+          <span>1. هٰذِهِ</span>
+          <div class="blank-slot" data-target="ghurfatnawm"></div>
+          <span>.</span>
+        </div>
+        <div class="sentence-container">
           <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/shirt.png" class="sentence-img" alt="قميص">
-          <span>1. أَرْتَدِي</span>
+          <span>2. هٰذَا</span>
           <div class="blank-slot" data-target="qamees"></div>
-          <span>أَبْيَضَ فِي الْمَدْرَسَة.</span>
+          <span>.</span>
+        </div>
+        <div class="sentence-container">
+          <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/pants.png" class="sentence-img" alt="بنطلون">
+          <span>3. هٰذَا</span>
+          <div class="blank-slot" data-target="bantaloon"></div>
+          <span>.</span>
         </div>
         <div class="sentence-container">
           <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/dress.png" class="sentence-img" alt="فستان">
-          <span>2. اشْتَرَتْ أُمِّي</span>
+          <span>4. هٰذَا</span>
           <div class="blank-slot" data-target="fustaan"></div>
-          <span>جَمِيلاً.</span>
-        </div>
-        <div class="sentence-container">
-          <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/coat.png" class="sentence-img" alt="معطف">
-          <span>3. الجَوُّ بَارِد فَأَلْبَسُ</span>
-          <div class="blank-slot" data-target="mitaf"></div>
-          <span>دَافِئاً.</span>
+          <span>.</span>
         </div>
         <div class="sentence-container">
           <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/shoes.png" class="sentence-img" alt="حذاء">
-          <span>4.</span>
+          <span>5. هٰذَا</span>
           <div class="blank-slot" data-target="hithaa"></div>
-          <span>أَخِي لَوْنُهُ بُنِّي.</span>
-        </div>
-        <div class="sentence-container">
-          <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/hat.png" class="sentence-img" alt="قبعة">
-          <span>5. أَضَعُ</span>
-          <div class="blank-slot" data-target="qubbaa"></div>
-          <span>عَلَى رَأْسِي.</span>
+          <span>.</span>
         </div>
 
         <div class="feedback" id="feedback-fill"></div>
@@ -510,32 +510,29 @@
 
       <div class="slide" id="slide-6">
         <div class="slide-header">
-          <h2>خامساً: ملابس شتوية وصيفية (10 نقاط)</h2>
+          <h2>خامساً: صَنِّف الكلمات (7 نقاط)</h2>
           <button class="back-menu-btn" onclick="goToFirstCard()"><i data-lucide="home" style="width:18px; height:18px;"></i> القائمة</button>
         </div>
-        <p class="instruction">اسحب 5 ملابس شتوية و 5 ملابس صيفية إلى الصندوق الصحيح:</p>
+        <p class="instruction">اسحب الكلمات إلى الصندوق الصحيح: غرفة النوم أو الملابس.</p>
 
         <div id="drag-source-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 12px; border: 2px solid #E2E8F0;">
-          <div class="draggable" draggable="true" data-type="winter">مِعْطَف</div>
-          <div class="draggable" draggable="true" data-type="summer">قَمِيص</div>
-          <div class="draggable" draggable="true" data-type="summer">فُسْتَان</div>
-          <div class="draggable" draggable="true" data-type="winter">كَنْزَة</div>
-          <div class="draggable" draggable="true" data-type="summer">بَنْطَلُون</div>
-          <div class="draggable" draggable="true" data-type="winter">جَوَارِب</div>
-          <div class="draggable" draggable="true" data-type="summer">تَنُّورَة</div>
-          <div class="draggable" draggable="true" data-type="winter">قُبَّعَة</div>
-          <div class="draggable" draggable="true" data-type="summer">حِذَاء</div>
-          <div class="draggable" draggable="true" data-type="winter">شَال</div>
+          <div class="draggable" draggable="true" data-type="room">غُرْفَةُ النَّوْم</div>
+          <div class="draggable" draggable="true" data-type="clothes">قَمِيص</div>
+          <div class="draggable" draggable="true" data-type="clothes">بَنْطَلُون</div>
+          <div class="draggable" draggable="true" data-type="clothes">فُسْتَان</div>
+          <div class="draggable" draggable="true" data-type="clothes">حِذَاء</div>
+          <div class="draggable" draggable="true" data-type="clothes">قُبَّعَة</div>
+          <div class="draggable" draggable="true" data-type="clothes">مِعْطَف</div>
         </div>
 
         <div style="display: flex; gap: 20px;">
-          <div class="sort-zone" data-target="winter">
-            <h3>ملابس شتوية ❄️ (Winter)</h3>
-            <div class="dropped-items-container" id="zone-winter-items"></div>
+          <div class="sort-zone" data-target="room">
+            <h3>غُرْفَةُ النَّوْم 🛏️</h3>
+            <div class="dropped-items-container" id="zone-room-items"></div>
           </div>
-          <div class="sort-zone" data-target="summer">
-            <h3>ملابس صيفية ☀️ (Summer)</h3>
-            <div class="dropped-items-container" id="zone-summer-items"></div>
+          <div class="sort-zone" data-target="clothes">
+            <h3>مَلَابِس 👕</h3>
+            <div class="dropped-items-container" id="zone-clothes-items"></div>
           </div>
         </div>
         <div class="feedback" id="feedback-sort"></div>
@@ -575,7 +572,7 @@
 
       <div class="slide" id="slide-8">
         <div class="slide-header">
-          <h2>سابعاً: صِل كلمة الملابس بصورتها (6 نقاط)</h2>
+          <h2>سابعاً: صِل الكلمة بالصورة (7 نقاط)</h2>
           <button class="back-menu-btn" onclick="goToFirstCard()"><i data-lucide="home" style="width:18px; height:18px;"></i> القائمة</button>
         </div>
         <p class="instruction">اسحب خطاً من الكلمة إلى الصورة المناسبة لها.</p>
@@ -584,21 +581,23 @@
             <svg id="matchSvg" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
 
             <div class="match-col">
+                <div class="match-item match-left" data-match="ghurfatnawm">غُرْفَةُ النَّوْم</div>
                 <div class="match-item match-left" data-match="qamees">قَمِيص</div>
+                <div class="match-item match-left" data-match="bantaloon">بَنْطَلُون</div>
                 <div class="match-item match-left" data-match="fustaan">فُسْتَان</div>
                 <div class="match-item match-left" data-match="hithaa">حِذَاء</div>
                 <div class="match-item match-left" data-match="qubbaa">قُبَّعَة</div>
                 <div class="match-item match-left" data-match="mitaf">مِعْطَف</div>
-                <div class="match-item match-left" data-match="jawarib">جَوَارِب</div>
             </div>
 
             <div class="match-col">
-                <div class="match-item match-right" data-match="fustaan"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/dress.png" alt="فستان"></div>
                 <div class="match-item match-right" data-match="mitaf"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/coat.png" alt="معطف"></div>
+                <div class="match-item match-right" data-match="ghurfatnawm"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/bedroom.png" alt="غرفة النوم"></div>
                 <div class="match-item match-right" data-match="qubbaa"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/hat.png" alt="قبعة"></div>
                 <div class="match-item match-right" data-match="hithaa"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/shoes.png" alt="حذاء"></div>
-                <div class="match-item match-right" data-match="jawarib"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/06374.png" alt="جوارب"></div>
+                <div class="match-item match-right" data-match="fustaan"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/dress.png" alt="فستان"></div>
                 <div class="match-item match-right" data-match="qamees"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/shirt.png" alt="قميص"></div>
+                <div class="match-item match-right" data-match="bantaloon"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/pants.png" alt="بنطلون"></div>
             </div>
         </div>
         <div class="feedback" id="feedback-match"></div>
@@ -612,60 +611,48 @@
           <p class="instruction">اضغط على النقاط النابضة لاكتشاف قطع الملابس في الصورة.</p>
 
           <div class="hotspot-container">
-            <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/hotspot.png" alt="ملابس" class="hotspot-img" id="finderImg" style="pointer-events: auto;">
+            <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/hotspot.png" alt="غرفة النوم" class="hotspot-img" id="finderImg" style="pointer-events: auto;">
 
-            <div class="hotspot" data-word="قميص" style="top: 25%; left: 20%;">
+            <div class="hotspot" data-word="غرفة النوم" style="top: 20%; left: 50%;">
+              <div class="hotspot-circle"></div>
+              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>غُرْفَةُ النَّوْم</span></div>
+            </div>
+            <div class="hotspot" data-word="قميص" style="top: 35%; left: 25%;">
               <div class="hotspot-circle"></div>
               <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>قَمِيص</span></div>
             </div>
-            <div class="hotspot" data-word="بنطلون" style="top: 55%; left: 20%;">
+            <div class="hotspot" data-word="بنطلون" style="top: 55%; left: 28%;">
               <div class="hotspot-circle"></div>
               <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>بَنْطَلُون</span></div>
             </div>
-            <div class="hotspot" data-word="حذاء" style="top: 80%; left: 22%;">
-              <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>حِذَاء</span></div>
-            </div>
-            <div class="hotspot" data-word="قبعة" style="top: 10%; left: 20%;">
-              <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>قُبَّعَة</span></div>
-            </div>
-            <div class="hotspot" data-word="معطف" style="top: 35%; left: 60%;">
-              <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>مِعْطَف</span></div>
-            </div>
-            <div class="hotspot" data-word="جوارب" style="top: 78%; left: 65%;">
-              <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>جَوَارِب</span></div>
-            </div>
-            <div class="hotspot" data-word="فستان" style="top: 45%; left: 80%;">
+            <div class="hotspot" data-word="فستان" style="top: 38%; left: 75%;">
               <div class="hotspot-circle"></div>
               <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>فُسْتَان</span></div>
             </div>
-            <div class="hotspot" data-word="تنورة" style="top: 65%; left: 80%;">
+            <div class="hotspot" data-word="قبعة" style="top: 12%; left: 22%;">
               <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>تَنُّورَة</span></div>
+              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>قُبَّعَة</span></div>
             </div>
-            <div class="hotspot" data-word="كنزة" style="top: 28%; left: 50%;">
+            <div class="hotspot" data-word="معطف" style="top: 30%; left: 55%;">
               <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>كَنْزَة</span></div>
+              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>مِعْطَف</span></div>
             </div>
-            <div class="hotspot" data-word="حزام" style="top: 50%; left: 42%;">
+            <div class="hotspot" data-word="حذاء" style="top: 82%; left: 35%;">
               <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>حِزَام</span></div>
+              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>حِذَاء</span></div>
             </div>
           </div>
       </div>
 
       <div class="slide" id="slide-10">
           <div class="slide-header">
-              <h2>تاسعاً: لعبة المتاهة (12 نقطة)</h2>
+              <h2>تاسعاً: لعبة المتاهة (7 نقاط)</h2>
               <button class="back-menu-btn" onclick="goToFirstCard()"><i data-lucide="home"></i> القائمة</button>
           </div>
           <p class="instruction" style="text-align: center;">قُد بطاقة الملابس للوصول إلى الصورة الصحيحة التي تعبر عن الكلمة المكتوبة!</p>
 
           <div style="text-align: center; margin-bottom: 10px;">
-              <h3 id="maze-header-title" style="color: var(--secondary); margin-bottom: 5px;">السؤال 1 من 12: اذهب إلى الصورة المناسبة</h3>
+              <h3 id="maze-header-title" style="color: var(--secondary); margin-bottom: 5px;">السؤال 1 من 7: اذهب إلى الصورة المناسبة</h3>
               <h2 id="maze-question-text" style="font-size: 36px; color: var(--primary); font-weight: 900; margin: 10px 0; text-shadow: 1px 1px 0px #fff;">قَمِيص</h2>
           </div>
 
@@ -687,7 +674,7 @@
           
           <div class="score-board">
             <h3>نتيجتك النهائية</h3>
-            <div class="score-number" id="final-score-text">0 / 45</div>
+            <div class="score-number" id="final-score-text">0 / 33</div>
           </div>
           
           <p class="instruction" style="font-size: 22px;">لقد أكملت الأنشطة بنجاح. هديتك جاهزة الآن!</p>
@@ -706,7 +693,7 @@
                       <div class="cert-subtitle">تُمنح هذه الشهادة بكل فخر إلى</div>
                       <div class="cert-name" id="certNameDisplay">اسم الطالب</div>
                       <div class="cert-desc">لإتمامه/ا أنشطة درس "الملابس" بنجاح وتميز.</div>
-                      <div class="cert-score-box">النتيجة: <span id="certScoreDisplay">0 / 45</span></div>
+                      <div class="cert-score-box">النتيجة: <span id="certScoreDisplay">0 / 33</span></div>
                   </div>
               </div>
           </div>
@@ -766,10 +753,10 @@
     // حساب الدرجة النهائية
     function calculateFinalScore() {
       const fillScore = document.querySelectorAll('.blank-slot.correct').length;
-      const spellingScore = Math.min(currentSpellLevel, 12); 
+      const spellingScore = Math.min(currentSpellLevel, 7); 
       const totalScore = fillScore + spellingScore + correctlySorted + matchScore + mazeScore;
-      document.getElementById('final-score-text').textContent = totalScore + " / 45";
-      document.getElementById('certScoreDisplay').textContent = totalScore + " / 45";
+      document.getElementById('final-score-text').textContent = totalScore + " / 33";
+      document.getElementById('certScoreDisplay').textContent = totalScore + " / 33";
     }
 
     function updateNavUI() {
@@ -885,25 +872,19 @@
     }
 
     const vocabDict = {
+      "غرفة النوم": { type:"noun", base:"غرفة النوم", textToSpeak:"غُرْفَةُ النَّوْم", meaning:"Bedroom", transliteration:"Ghurfat al-nawm", img: DR_BASE+"bedroom.png", color:"#14B8A6", bg:"#F0FDFA" },
       "قميص":   { type:"noun", base:"قميص",   textToSpeak:"قَمِيص",   meaning:"Shirt",    transliteration:"Qamees",    img: DR_BASE+"shirt.png", color:"#3B82F6", bg:"#EFF6FF", audioUrl: GITHUB_BASE+"qamees.mp3" },
       "بنطلون": { type:"noun", base:"بنطلون", textToSpeak:"بَنْطَلُون", meaning:"Pants",    transliteration:"Bantaloon", img: DR_BASE+"pants.png", color:"#1E293B", bg:"#F8FAFC", audioUrl: GITHUB_BASE+"bantaloon.mp3" },
       "فستان":  { type:"noun", base:"فستان",  textToSpeak:"فُسْتَان",  meaning:"Dress",    transliteration:"Fustaan",   img: DR_BASE+"dress.png", color:"#FF1493", bg:"#FFF0F8", audioUrl: GITHUB_BASE+"fustaan.mp3" },
       "حذاء":   { type:"noun", base:"حذاء",   textToSpeak:"حِذَاء",   meaning:"Shoe",     transliteration:"Hithaa'",   img: DR_BASE+"shoes.png", color:"#8B4513", bg:"#FFF5E5", audioUrl: GITHUB_BASE+"hithaa.mp3" },
-      "قبعة":   { type:"noun", base:"قبعة",   textToSpeak:"قُبَّعَة",  meaning:"Hat",      transliteration:"Qubb'a",    img: DR_BASE+"hat.png", color:"#F59E0B", bg:"#FFFBEB", audioUrl: GITHUB_BASE+"qubba.mp3" },
-      "معطف":   { type:"noun", base:"معطف",   textToSpeak:"مِعْطَف",   meaning:"Coat",     transliteration:"Mi'taf",    img: DR_BASE+"coat.png", color:"#8B5CF6", bg:"#F5F3FF", audioUrl: GITHUB_BASE+"mitaf.mp3" },
-      "جوارب":  { type:"noun", base:"جوارب",  textToSpeak:"جَوَارِب",  meaning:"Socks",    transliteration:"Jawarib",   img: DR_BASE+"06374.png", color:"#10B981", bg:"#F0FDF4", audioUrl: GITHUB_BASE+"jawarib.mp3" },
-      "تنورة":  { type:"noun", base:"تنورة",  textToSpeak:"تَنُّورَة", meaning:"Skirt",    transliteration:"Tannoora",  img: DR_BASE+"06376.png", color:"#EF4444", bg:"#FFF5F5", audioUrl: GITHUB_BASE+"tannoora.mp3" },
-      "كنزة":   { type:"noun", base:"كنزة",   textToSpeak:"كَنْزَة",   meaning:"Sweater",  transliteration:"Kanza",     img: DR_BASE+"05731.png", color:"#F97316", bg:"#FFF7ED", audioUrl: GITHUB_BASE+"kanza.mp3" },
-      "حزام":   { type:"noun", base:"حزام",   textToSpeak:"حِزَام",   meaning:"Belt",     transliteration:"Hizaam",    img: DR_BASE+"05733.png", color:"#6B7280", bg:"#F9FAFB", audioUrl: GITHUB_BASE+"hizaam.mp3" },
-      "شال":    { type:"noun", base:"شال",    textToSpeak:"شَال",     meaning:"Scarf",    transliteration:"Shaal",     img: DR_BASE+"01729.png", color:"#EC4899", bg:"#FDF2F8", audioUrl: GITHUB_BASE+"shaal.mp3" },
-      "قفاز":   { type:"noun", base:"قفاز",   textToSpeak:"قُفَّاز",   meaning:"Gloves",   transliteration:"Quffaaz",   img: DR_BASE+"hotspot.png",  color:"#6D28D9", bg:"#EDE9FE", audioUrl: GITHUB_BASE+"quffaaz.mp3" }
+      "قبعة":   { type:"noun", base:"قبعة",   textToSpeak:"قُبَّعَة",  meaning:"Hat",      transliteration:"Qubba'a",   img: DR_BASE+"hat.png", color:"#F59E0B", bg:"#FFFBEB", audioUrl: GITHUB_BASE+"qubba.mp3" },
+      "معطف":   { type:"noun", base:"معطف",   textToSpeak:"مِعْطَف",   meaning:"Coat",     transliteration:"Mi'taf",    img: DR_BASE+"coat.png", color:"#8B5CF6", bg:"#F5F3FF", audioUrl: GITHUB_BASE+"mitaf.mp3" }
     };
 
     const aliases = [
+      ["غرفتي", "غرفة النوم"], ["غرفة", "غرفة النوم"], ["النوم", "غرفة النوم"],
       ["قميصاً", "قميص"], ["بنطلوني", "بنطلون"], ["فستاناً", "فستان"],
-      ["حذائي", "حذاء"], ["قبعتي", "قبعة"], ["معطفاً", "معطف"],
-      ["جواربي", "جوارب"], ["تنورة", "تنورة"], ["كنزة", "كنزة"],
-      ["الكنزة", "كنزة"], ["الحزام", "حزام"], ["الشال", "شال"]
+      ["حذائي", "حذاء"], ["قبعتي", "قبعة"], ["معطفاً", "معطف"]
     ];
 
     function stripPunctuation(t) { return (t || "").replace(/[.,!?؟؛:"'«»()\[\]-]/g, ""); }
@@ -921,16 +902,13 @@
     });
 
     const textParagraphs = [
-      "أرتدي قميصاً أبيض في المدرسة كل يوم.",
-      "بنطلوني لونه أزرق وأنا أحبه كثيراً.",
-      "اشترت أمي فستاناً جميلاً من السوق.",
-      "حذائي لونه بني وهو مريح جداً.",
-      "أضع قبعتي على رأسي عندما تشرق الشمس.",
-      "في الشتاء أرتدي معطفاً دافئاً.",
-      "أنا أحب جواربي الملونة.",
-      "تنورة أختي طويلة ومزيّنة.",
-      "الكنزة تحمينا من البرد في الشتاء.",
-      "أضع الحزام مع بنطلوني الجديد."
+      "في غرفتي غرفة النوم.",
+      "في غرفتي قميص.",
+      "في غرفتي بنطلون.",
+      "في غرفتي فستان.",
+      "في غرفتي حذاء.",
+      "في غرفتي قبعة.",
+      "في غرفتي معطف."
     ];
 
     const textContainer = document.getElementById("textContainer");
@@ -1043,16 +1021,13 @@
 
     // --- نظام البطاقات التعليمية ---
     const flashcardsData = [
+      { word: "غُرْفَةُ النَّوْم", meaning: "Bedroom", imgFull: DR_BASE+"bedroom.png" },
       { word: "قَمِيص",    meaning: "Shirt",   imgFull: DR_BASE+"shirt.png" },
       { word: "بَنْطَلُون", meaning: "Pants",   imgFull: DR_BASE+"pants.png" },
       { word: "فُسْتَان",   meaning: "Dress",   imgFull: DR_BASE+"dress.png" },
       { word: "حِذَاء",    meaning: "Shoe",    imgFull: DR_BASE+"shoes.png" },
       { word: "قُبَّعَة",   meaning: "Hat",     imgFull: DR_BASE+"hat.png" },
-      { word: "مِعْطَف",    meaning: "Coat",    imgFull: DR_BASE+"coat.png" },
-      { word: "جَوَارِب",   meaning: "Socks",   imgFull: DR_BASE+"06374.png" },
-      { word: "تَنُّورَة",  meaning: "Skirt",   imgFull: DR_BASE+"06376.png" },
-      { word: "كَنْزَة",    meaning: "Sweater", imgFull: DR_BASE+"05731.png" },
-      { word: "حِزَام",    meaning: "Belt",    imgFull: DR_BASE+"05733.png" }
+      { word: "مِعْطَف",    meaning: "Coat",    imgFull: DR_BASE+"coat.png" }
     ];
     let fcIndex = 0;
     function flipCard(el) { playPop(); el.querySelector('.flashcard').classList.toggle('is-flipped'); }
@@ -1067,32 +1042,27 @@
         const newImg = document.createElement('img');
         newImg.src = flashcardsData[fcIndex].imgFull;
         iconContainer.appendChild(newImg);
-        document.getElementById('fc-counter').textContent = `${fcIndex + 1} / 10`;
+        document.getElementById('fc-counter').textContent = `${fcIndex + 1} / 7`;
       }, 200);
     }
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('fc-icon-container').innerHTML = `<img src="${DR_BASE}shirt.png">`;
+        document.getElementById('fc-icon-container').innerHTML = `<img src="${DR_BASE}bedroom.png">`;
         initMazeBoard(); 
         lucide.createIcons();
     });
     
-    function nextFlashcard() { playPop(); fcIndex = (fcIndex + 1) % 10; updateFlashcard(); }
-    function prevFlashcard() { playPop(); fcIndex = (fcIndex - 1 + 10) % 10; updateFlashcard(); }
+    function nextFlashcard() { playPop(); fcIndex = (fcIndex + 1) % 7; updateFlashcard(); }
+    function prevFlashcard() { playPop(); fcIndex = (fcIndex - 1 + 7) % 7; updateFlashcard(); }
 
     // --- لعبة ترتيب الحروف ---
     const spellingLevels = [
-      { target: "قميص",   clue: "Shirt",   letters: ["ص", "ي", "م", "ق"] },
-      { target: "فستان",  clue: "Dress",   letters: ["ن", "ا", "ت", "س", "ف"] },
-      { target: "حذاء",   clue: "Shoe",    letters: ["ء", "ا", "ذ", "ح"] },
-      { target: "قبعة",   clue: "Hat",     letters: ["ة", "ع", "ب", "ق"] },
-      { target: "معطف",   clue: "Coat",    letters: ["ف", "ط", "ع", "م"] },
-      { target: "جوارب",  clue: "Socks",   letters: ["ب", "ر", "ا", "و", "ج"] },
-      { target: "تنورة",  clue: "Skirt",   letters: ["ة", "ر", "و", "ن", "ت"] },
-      { target: "كنزة",   clue: "Sweater", letters: ["ة", "ز", "ن", "ك"] },
-      { target: "حزام",   clue: "Belt",    letters: ["م", "ا", "ز", "ح"] },
-      { target: "شال",    clue: "Scarf",   letters: ["ل", "ا", "ش"] },
-      { target: "قفاز",   clue: "Gloves",  letters: ["ز", "ا", "ف", "ق"] },
-      { target: "بنطلون", clue: "Pants",   letters: ["ن", "و", "ل", "ط", "ن", "ب"] }
+      { target: "غرفة", clue: "غرفة النوم", letters: ["ة", "ف", "ر", "غ"] },
+      { target: "قميص", clue: "Shirt", letters: ["ص", "ي", "م", "ق"] },
+      { target: "بنطلون", clue: "Pants", letters: ["ن", "و", "ل", "ط", "ن", "ب"] },
+      { target: "فستان", clue: "Dress", letters: ["ن", "ا", "ت", "س", "ف"] },
+      { target: "حذاء", clue: "Shoe", letters: ["ء", "ا", "ذ", "ح"] },
+      { target: "قبعة", clue: "Hat", letters: ["ة", "ع", "ب", "ق"] },
+      { target: "معطف", clue: "Coat", letters: ["ف", "ط", "ع", "م"] }
     ];
     let currentSpelling = [];
     const answerBox = document.getElementById('letter-answer-box');
@@ -1102,7 +1072,7 @@
       if(currentSpellLevel >= spellingLevels.length) return; 
       currentSpelling = [];
       const level = spellingLevels[currentSpellLevel];
-      document.getElementById('spell-progress').textContent = `الكلمة ${currentSpellLevel + 1} من 12`;
+      document.getElementById('spell-progress').textContent = `الكلمة ${currentSpellLevel + 1} من 7`;
       document.getElementById('spell-clue').innerHTML = `كون كلمة: <strong>(${level.clue})</strong>`;
       
       answerBox.innerHTML = '';
@@ -1137,7 +1107,7 @@
       
       if (currentSpelling.join('') === target) {
         playSuccess(); fb.style.color = "#059669"; 
-        if (currentSpellLevel < 11) {
+        if (currentSpellLevel < 6) {
           fb.textContent = "ممتاز! جاري تحميل الكلمة التالية... 🌟";
           setTimeout(() => { currentSpellLevel++; loadSpellLevel(); }, 1500);
         } else {
@@ -1229,7 +1199,7 @@
             draggedItem.setAttribute('draggable', 'false');
             draggedItem.style.borderColor = '#10B981'; draggedItem.style.background = '#D1FAE5'; draggedItem.style.cursor = 'default'; 
             correctlySorted++; draggedItem = null; 
-            if(correctlySorted === 10) { document.getElementById('feedback-sort').style.color = "#059669"; document.getElementById('feedback-sort').textContent = "بطل! لقد صنفت الـ 10 ملابس بنجاح 🏆"; }
+            if(correctlySorted === 7) { document.getElementById('feedback-sort').style.color = "#059669"; document.getElementById('feedback-sort').textContent = "بطل! لقد صنفت الكلمات السبع بنجاح 🏆"; }
           } else {
             playError(); const fb = document.getElementById('feedback-sort');
             fb.style.color = "#DC2626"; fb.textContent = "حاول مرة أخرى!"; setTimeout(() => { fb.textContent = ""; }, 1500);
@@ -1423,18 +1393,13 @@
     let currentMazeCorrectAnswer = "";
 
     const mazeQuestions = [
+        { text: "غُرْفَةُ النَّوْم", correctImg: DR_BASE+"bedroom.png", wrongImgs: [DR_BASE+"shirt.png", DR_BASE+"hat.png"] },
         { text: "قَمِيص",    correctImg: DR_BASE+"shirt.png", wrongImgs: [DR_BASE+"pants.png", DR_BASE+"dress.png"] },
-        { text: "بَنْطَلُون", correctImg: DR_BASE+"pants.png", wrongImgs: [DR_BASE+"shirt.png", DR_BASE+"shoes.png"] },
-        { text: "فُسْتَان",   correctImg: DR_BASE+"dress.png", wrongImgs: [DR_BASE+"shoes.png", DR_BASE+"06376.png"] },
-        { text: "حِذَاء",    correctImg: DR_BASE+"shoes.png", wrongImgs: [DR_BASE+"shirt.png", DR_BASE+"hat.png"] },
-        { text: "قُبَّعَة",   correctImg: DR_BASE+"hat.png", wrongImgs: [DR_BASE+"shoes.png", DR_BASE+"coat.png"] },
-        { text: "مِعْطَف",    correctImg: DR_BASE+"coat.png", wrongImgs: [DR_BASE+"hat.png", DR_BASE+"06374.png"] },
-        { text: "جَوَارِب",   correctImg: DR_BASE+"06374.png", wrongImgs: [DR_BASE+"coat.png", DR_BASE+"06376.png"] },
-        { text: "تَنُّورَة",  correctImg: DR_BASE+"06376.png", wrongImgs: [DR_BASE+"06374.png", DR_BASE+"dress.png"] },
-        { text: "كَنْزَة",    correctImg: DR_BASE+"05731.png", wrongImgs: [DR_BASE+"coat.png", DR_BASE+"06376.png"] },
-        { text: "حِزَام",    correctImg: DR_BASE+"05733.png", wrongImgs: [DR_BASE+"shoes.png", DR_BASE+"pants.png"] },
-        { text: "شَال",      correctImg: DR_BASE+"01729.png", wrongImgs: [DR_BASE+"05731.png", DR_BASE+"shirt.png"] },
-        { text: "قُفَّاز",    correctImg: DR_BASE+"hotspot.png",  wrongImgs: [DR_BASE+"06374.png", DR_BASE+"01729.png"] }
+        { text: "بَنْطَلُون", correctImg: DR_BASE+"pants.png", wrongImgs: [DR_BASE+"coat.png", DR_BASE+"shoes.png"] },
+        { text: "فُسْتَان",   correctImg: DR_BASE+"dress.png", wrongImgs: [DR_BASE+"hat.png", DR_BASE+"shirt.png"] },
+        { text: "حِذَاء",    correctImg: DR_BASE+"shoes.png", wrongImgs: [DR_BASE+"pants.png", DR_BASE+"coat.png"] },
+        { text: "قُبَّعَة",   correctImg: DR_BASE+"hat.png", wrongImgs: [DR_BASE+"bedroom.png", DR_BASE+"dress.png"] },
+        { text: "مِعْطَف",    correctImg: DR_BASE+"coat.png", wrongImgs: [DR_BASE+"hat.png", DR_BASE+"shoes.png"] }
     ];
 
     function initMazeBoard() {
@@ -1475,7 +1440,7 @@
         const q = mazeQuestions[currentMazeQIndex];
         document.getElementById('maze-question-text').textContent = q.text;
         document.getElementById('maze-question-text').style.display = 'block';
-        document.getElementById('maze-header-title').textContent = `السؤال ${currentMazeQIndex + 1} من 12: اذهب إلى الصورة المناسبة`;
+        document.getElementById('maze-header-title').textContent = `السؤال ${currentMazeQIndex + 1} من 7: اذهب إلى الصورة المناسبة`;
         currentMazeCorrectAnswer = q.correctImg;
         
         let opts = [q.correctImg, ...q.wrongImgs];
