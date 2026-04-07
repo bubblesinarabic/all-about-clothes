@@ -322,6 +322,56 @@
     .btn-camera { background: var(--secondary); }
     .btn-gallery { background: var(--primary); }
 
+    /* BEDROOM DRAG-DROP ACTIVITY */
+    .bedroom-scene {
+        background-size: cover;
+        background-position: center;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        min-height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 20px;
+    }
+    .bedroom-dropzones {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        width: 68%;
+    }
+    .bedroom-dropzone { display: flex; flex-direction: column; align-items: center; }
+    .dz-box {
+        width: 100%;
+        min-height: 115px;
+        border: 3px dashed rgba(30,41,59,0.65);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+    }
+    .dz-box.drag-over { background: rgba(255,255,255,0.55); border-color: var(--secondary); border-style: solid; }
+    .dz-box.filled { border-style: solid; border-color: #10B981; background: rgba(209,250,229,0.65); }
+    .dz-box img { width: 80%; height: 85px; object-fit: contain; }
+    .dz-label { font-size: 22px; font-weight: 800; color: #1E293B; margin-top: 6px; text-shadow: 1px 1px 0 rgba(255,255,255,0.9); }
+    .clothes-bank { background: #FFF8F0; border-radius: 16px; padding: 12px 16px; margin-top: 12px; border: 2px solid #E2E8F0; }
+    .bank-title { text-align: center; font-size: 18px; font-weight: bold; color: #64748B; margin-bottom: 10px; }
+    .bank-items { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .clothes-drag-item {
+        width: 105px; height: 95px; background: white;
+        border: 2px solid #E2E8F0; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: grab; transition: 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        user-select: none;
+    }
+    .clothes-drag-item:hover:not(.placed) { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); border-color: var(--secondary); }
+    .clothes-drag-item img { width: 80px; height: 75px; object-fit: contain; pointer-events: none; }
+    .clothes-drag-item.placed { opacity: 0.35; cursor: default; transform: none !important; }
+
   </style>
 </head>
 <body>
@@ -341,7 +391,7 @@
         
         <div class="profile-setup-box">
             <div class="profile-img-preview">
-                <img id="setup-preview-img" src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/tawil.png" alt="صورة الملف">
+                <img id="setup-preview-img" src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/shirt.png" alt="صورة الملف">
             </div>
             
             <input type="text" id="globalStudentName" class="cert-input" placeholder="اكتب اسمك هنا..." oninput="updateGlobalData()">
@@ -471,31 +521,31 @@
         </div>
 
         <div class="sentence-container">
-          <img src="الملابس/dr/06362.png" class="sentence-img" alt="قميص">
+          <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/shirt.png" class="sentence-img" alt="قميص">
           <span>1. أَرْتَدِي</span>
           <div class="blank-slot" data-target="qamees"></div>
           <span>أَبْيَضَ فِي الْمَدْرَسَة.</span>
         </div>
         <div class="sentence-container">
-          <img src="الملابس/dr/06366.png" class="sentence-img" alt="فستان">
+          <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/dress.png" class="sentence-img" alt="فستان">
           <span>2. اشْتَرَتْ أُمِّي</span>
           <div class="blank-slot" data-target="fustaan"></div>
           <span>جَمِيلاً.</span>
         </div>
         <div class="sentence-container">
-          <img src="الملابس/dr/06372.png" class="sentence-img" alt="معطف">
+          <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/coat.png" class="sentence-img" alt="معطف">
           <span>3. الجَوُّ بَارِد فَأَلْبَسُ</span>
           <div class="blank-slot" data-target="mitaf"></div>
           <span>دَافِئاً.</span>
         </div>
         <div class="sentence-container">
-          <img src="الملابس/dr/06368.png" class="sentence-img" alt="حذاء">
+          <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/shoes.png" class="sentence-img" alt="حذاء">
           <span>4.</span>
           <div class="blank-slot" data-target="hithaa"></div>
           <span>أَخِي لَوْنُهُ بُنِّي.</span>
         </div>
         <div class="sentence-container">
-          <img src="الملابس/dr/06370.png" class="sentence-img" alt="قبعة">
+          <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/hat.png" class="sentence-img" alt="قبعة">
           <span>5. أَضَعُ</span>
           <div class="blank-slot" data-target="qubbaa"></div>
           <span>عَلَى رَأْسِي.</span>
@@ -571,33 +621,66 @@
 
       <div class="slide" id="slide-8">
         <div class="slide-header">
-          <h2>سابعاً: صِل كلمة الملابس بصورتها (6 نقاط)</h2>
+          <h2>سابعاً: ضع الملابس في مكانها (6 نقاط)</h2>
           <button class="back-menu-btn" onclick="goToFirstCard()"><i data-lucide="home" style="width:18px; height:18px;"></i> القائمة</button>
         </div>
-        <p class="instruction">اسحب خطاً من الكلمة إلى الصورة المناسبة لها.</p>
+        <p class="instruction">اسحب صورة كل قطعة ملابس إلى المربع الذي يحمل اسمها الصحيح.</p>
 
-        <div class="match-board" id="matchBoard">
-            <svg id="matchSvg" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
-
-            <div class="match-col">
-                <div class="match-item match-left" data-match="qamees">قَمِيص</div>
-                <div class="match-item match-left" data-match="fustaan">فُسْتَان</div>
-                <div class="match-item match-left" data-match="hithaa">حِذَاء</div>
-                <div class="match-item match-left" data-match="qubbaa">قُبَّعَة</div>
-                <div class="match-item match-left" data-match="mitaf">مِعْطَف</div>
-                <div class="match-item match-left" data-match="jawarib">جَوَارِب</div>
+        <!-- Bedroom scene with drop zones -->
+        <div class="bedroom-scene" style="background-image: url('https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/bedroom.png');">
+          <div class="bedroom-dropzones">
+            <div class="bedroom-dropzone">
+              <div class="dz-box" data-target="qamees"></div>
+              <div class="dz-label">قَمِيص</div>
             </div>
-
-            <div class="match-col">
-                <div class="match-item match-right" data-match="fustaan"><img src="الملابس/dr/06366.png" alt="فستان"></div>
-                <div class="match-item match-right" data-match="mitaf"><img src="الملابس/dr/06372.png" alt="معطف"></div>
-                <div class="match-item match-right" data-match="qubbaa"><img src="الملابس/dr/06370.png" alt="قبعة"></div>
-                <div class="match-item match-right" data-match="hithaa"><img src="الملابس/dr/06368.png" alt="حذاء"></div>
-                <div class="match-item match-right" data-match="jawarib"><img src="الملابس/dr/06374.png" alt="جوارب"></div>
-                <div class="match-item match-right" data-match="qamees"><img src="الملابس/dr/06362.png" alt="قميص"></div>
+            <div class="bedroom-dropzone">
+              <div class="dz-box" data-target="fustaan"></div>
+              <div class="dz-label">فُسْتَان</div>
             </div>
+            <div class="bedroom-dropzone">
+              <div class="dz-box" data-target="mitaf"></div>
+              <div class="dz-label">مِعْطَف</div>
+            </div>
+            <div class="bedroom-dropzone">
+              <div class="dz-box" data-target="bantaloon"></div>
+              <div class="dz-label">بَنْطَلُون</div>
+            </div>
+            <div class="bedroom-dropzone">
+              <div class="dz-box" data-target="hithaa"></div>
+              <div class="dz-label">حِذَاء</div>
+            </div>
+            <div class="bedroom-dropzone">
+              <div class="dz-box" data-target="qubbaa"></div>
+              <div class="dz-label">قُبَّعَة</div>
+            </div>
+          </div>
         </div>
-        <div class="feedback" id="feedback-match"></div>
+
+        <!-- Draggable clothing bank -->
+        <div class="clothes-bank">
+          <div class="bank-title">الملابس</div>
+          <div class="bank-items">
+            <div class="clothes-drag-item" draggable="true" data-word="qamees">
+              <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/shirt.png" alt="قميص">
+            </div>
+            <div class="clothes-drag-item" draggable="true" data-word="fustaan">
+              <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/dress.png" alt="فستان">
+            </div>
+            <div class="clothes-drag-item" draggable="true" data-word="mitaf">
+              <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/coat.png" alt="معطف">
+            </div>
+            <div class="clothes-drag-item" draggable="true" data-word="bantaloon">
+              <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/pants.png" alt="بنطلون">
+            </div>
+            <div class="clothes-drag-item" draggable="true" data-word="hithaa">
+              <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/shoes.png" alt="حذاء">
+            </div>
+            <div class="clothes-drag-item" draggable="true" data-word="qubbaa">
+              <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/hat.png" alt="قبعة">
+            </div>
+          </div>
+        </div>
+        <div class="feedback" id="feedback-bedroom"></div>
       </div>
 
       <div class="slide" id="slide-9">
@@ -608,7 +691,7 @@
           <p class="instruction">اضغط على النقاط النابضة لاكتشاف قطع الملابس في الصورة.</p>
 
           <div class="hotspot-container">
-            <img src="الملابس/dr/0928.png" alt="ملابس" class="hotspot-img" id="finderImg" style="pointer-events: auto;">
+            <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/hotspot.png" alt="ملابس" class="hotspot-img" id="finderImg" style="pointer-events: auto;">
 
             <div class="hotspot" data-word="قميص" style="top: 25%; left: 20%;">
               <div class="hotspot-circle"></div>
@@ -695,7 +778,7 @@
           <div class="cert-preview-scroll">
               <div id="certificateArea" class="certificate">
                   <div class="cert-overlay">
-                      <img src="الملابس/dr/06362.png" alt="Icon" class="cert-logo" id="certDefaultLogo">
+                      <img src="https://raw.githubusercontent.com/bubblesinarabic/bubblesinarabic-images/main/shirt.png" alt="Icon" class="cert-logo" id="certDefaultLogo">
                       <img src="" alt="User Photo" class="cert-user-photo" id="certUserPhotoDisplay" style="display: none;">
                       
                       <div class="cert-title">شَهَادَةُ إِتْمَام</div>
@@ -746,7 +829,7 @@
     const totalSlides = slides.length; 
     const dotsContainer = document.getElementById('dots-container');
     const footer = document.getElementById('main-footer');
-    let correctlySorted = 0; let currentSpellLevel = 0; let matchScore = 0; let mazeScore = 0;
+    let correctlySorted = 0; let currentSpellLevel = 0; let bedroomScore = 0; let mazeScore = 0;
 
     for(let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
@@ -758,7 +841,7 @@
     function calculateFinalScore() {
       const fillScore = document.querySelectorAll('.blank-slot.correct').length;
       const spellingScore = Math.min(currentSpellLevel, 12); 
-      const totalScore = fillScore + spellingScore + correctlySorted + matchScore + mazeScore;
+      const totalScore = fillScore + spellingScore + correctlySorted + bedroomScore + mazeScore;
       document.getElementById('final-score-text').textContent = totalScore + " / 45";
       document.getElementById('certScoreDisplay').textContent = totalScore + " / 45";
     }
@@ -880,12 +963,12 @@
     }
 
     const vocabDict = {
-      "قميص":   { type:"noun", base:"قميص",   textToSpeak:"قَمِيص",   meaning:"Shirt",    transliteration:"Qamees",    img: DR_BASE+"06362.png", color:"#3B82F6", bg:"#EFF6FF", audioUrl: GITHUB_BASE+"qamees.mp3" },
-      "بنطلون": { type:"noun", base:"بنطلون", textToSpeak:"بَنْطَلُون", meaning:"Pants",    transliteration:"Bantaloon", img: DR_BASE+"06364.png", color:"#1E293B", bg:"#F8FAFC", audioUrl: GITHUB_BASE+"bantaloon.mp3" },
-      "فستان":  { type:"noun", base:"فستان",  textToSpeak:"فُسْتَان",  meaning:"Dress",    transliteration:"Fustaan",   img: DR_BASE+"06366.png", color:"#FF1493", bg:"#FFF0F8", audioUrl: GITHUB_BASE+"fustaan.mp3" },
-      "حذاء":   { type:"noun", base:"حذاء",   textToSpeak:"حِذَاء",   meaning:"Shoe",     transliteration:"Hithaa'",   img: DR_BASE+"06368.png", color:"#8B4513", bg:"#FFF5E5", audioUrl: GITHUB_BASE+"hithaa.mp3" },
-      "قبعة":   { type:"noun", base:"قبعة",   textToSpeak:"قُبَّعَة",  meaning:"Hat",      transliteration:"Qubb'a",    img: DR_BASE+"06370.png", color:"#F59E0B", bg:"#FFFBEB", audioUrl: GITHUB_BASE+"qubba.mp3" },
-      "معطف":   { type:"noun", base:"معطف",   textToSpeak:"مِعْطَف",   meaning:"Coat",     transliteration:"Mi'taf",    img: DR_BASE+"06372.png", color:"#8B5CF6", bg:"#F5F3FF", audioUrl: GITHUB_BASE+"mitaf.mp3" },
+      "قميص":   { type:"noun", base:"قميص",   textToSpeak:"قَمِيص",   meaning:"Shirt",    transliteration:"Qamees",    img: GITHUB_BASE+"shirt.png",  color:"#3B82F6", bg:"#EFF6FF", audioUrl: GITHUB_BASE+"qamees.mp3" },
+      "بنطلون": { type:"noun", base:"بنطلون", textToSpeak:"بَنْطَلُون", meaning:"Pants",    transliteration:"Bantaloon", img: GITHUB_BASE+"pants.png",  color:"#1E293B", bg:"#F8FAFC", audioUrl: GITHUB_BASE+"bantaloon.mp3" },
+      "فستان":  { type:"noun", base:"فستان",  textToSpeak:"فُسْتَان",  meaning:"Dress",    transliteration:"Fustaan",   img: GITHUB_BASE+"dress.png",  color:"#FF1493", bg:"#FFF0F8", audioUrl: GITHUB_BASE+"fustaan.mp3" },
+      "حذاء":   { type:"noun", base:"حذاء",   textToSpeak:"حِذَاء",   meaning:"Shoe",     transliteration:"Hithaa'",   img: GITHUB_BASE+"shoes.png",  color:"#8B4513", bg:"#FFF5E5", audioUrl: GITHUB_BASE+"hithaa.mp3" },
+      "قبعة":   { type:"noun", base:"قبعة",   textToSpeak:"قُبَّعَة",  meaning:"Hat",      transliteration:"Qubb'a",    img: GITHUB_BASE+"hat.png",    color:"#F59E0B", bg:"#FFFBEB", audioUrl: GITHUB_BASE+"qubba.mp3" },
+      "معطف":   { type:"noun", base:"معطف",   textToSpeak:"مِعْطَف",   meaning:"Coat",     transliteration:"Mi'taf",    img: GITHUB_BASE+"coat.png",   color:"#8B5CF6", bg:"#F5F3FF", audioUrl: GITHUB_BASE+"mitaf.mp3" },
       "جوارب":  { type:"noun", base:"جوارب",  textToSpeak:"جَوَارِب",  meaning:"Socks",    transliteration:"Jawarib",   img: DR_BASE+"06374.png", color:"#10B981", bg:"#F0FDF4", audioUrl: GITHUB_BASE+"jawarib.mp3" },
       "تنورة":  { type:"noun", base:"تنورة",  textToSpeak:"تَنُّورَة", meaning:"Skirt",    transliteration:"Tannoora",  img: DR_BASE+"06376.png", color:"#EF4444", bg:"#FFF5F5", audioUrl: GITHUB_BASE+"tannoora.mp3" },
       "كنزة":   { type:"noun", base:"كنزة",   textToSpeak:"كَنْزَة",   meaning:"Sweater",  transliteration:"Kanza",     img: DR_BASE+"05731.png", color:"#F97316", bg:"#FFF7ED", audioUrl: GITHUB_BASE+"kanza.mp3" },
@@ -1038,12 +1121,12 @@
 
     // --- FLASHCARDS ---
     const flashcardsData = [
-      { word: "قَمِيص",    meaning: "Shirt",   imgFull: DR_BASE+"06362.png" },
-      { word: "بَنْطَلُون", meaning: "Pants",   imgFull: DR_BASE+"06364.png" },
-      { word: "فُسْتَان",   meaning: "Dress",   imgFull: DR_BASE+"06366.png" },
-      { word: "حِذَاء",    meaning: "Shoe",    imgFull: DR_BASE+"06368.png" },
-      { word: "قُبَّعَة",   meaning: "Hat",     imgFull: DR_BASE+"06370.png" },
-      { word: "مِعْطَف",    meaning: "Coat",    imgFull: DR_BASE+"06372.png" },
+      { word: "قَمِيص",    meaning: "Shirt",   imgFull: GITHUB_BASE+"shirt.png" },
+      { word: "بَنْطَلُون", meaning: "Pants",   imgFull: GITHUB_BASE+"pants.png" },
+      { word: "فُسْتَان",   meaning: "Dress",   imgFull: GITHUB_BASE+"dress.png" },
+      { word: "حِذَاء",    meaning: "Shoe",    imgFull: GITHUB_BASE+"shoes.png" },
+      { word: "قُبَّعَة",   meaning: "Hat",     imgFull: GITHUB_BASE+"hat.png" },
+      { word: "مِعْطَف",    meaning: "Coat",    imgFull: GITHUB_BASE+"coat.png" },
       { word: "جَوَارِب",   meaning: "Socks",   imgFull: DR_BASE+"06374.png" },
       { word: "تَنُّورَة",  meaning: "Skirt",   imgFull: DR_BASE+"06376.png" },
       { word: "كَنْزَة",    meaning: "Sweater", imgFull: DR_BASE+"05731.png" },
@@ -1066,7 +1149,7 @@
       }, 200);
     }
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('fc-icon-container').innerHTML = `<img src="${DR_BASE}06362.png">`;
+        document.getElementById('fc-icon-container').innerHTML = `<img src="${GITHUB_BASE}shirt.png">`;
         initMazeBoard(); // Prepare Maze Game Grid
         lucide.createIcons();
     });
@@ -1304,96 +1387,98 @@
     function setColorData(data, pos, color) { data[pos] = color[0]; data[pos+1] = color[1]; data[pos+2] = color[2]; data[pos+3] = color[3]; }
 
 // --- MATCHING ---
-    const matchBoard = document.getElementById('matchBoard');
-    const matchSvg = document.getElementById('matchSvg');
-    let isDrawingMatch = false;
-    let currentStartMatch = null;
-    let activeMatchLine = null;
-    let completedMatchLines = [];
+// --- BEDROOM DRAG-DROP ---
+    let draggedClothes = null;
+    let touchDragItem = null;
+    let touchClone = null;
 
-    function getMatchCenter(el) {
-      const boardRect = matchBoard.getBoundingClientRect();
-      const rect = el.getBoundingClientRect();
-      return {
-        x: rect.left - boardRect.left + rect.width / 2,
-        y: rect.top - boardRect.top + rect.height / 2
-      };
-    }
-
-    function startMatch(e) {
-      if (this.classList.contains('matched')) return;
-      isDrawingMatch = true;
-      currentStartMatch = this;
-      const center = getMatchCenter(this);
-      
-      activeMatchLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      activeMatchLine.setAttribute('x1', center.x);
-      activeMatchLine.setAttribute('y1', center.y);
-      activeMatchLine.setAttribute('x2', center.x);
-      activeMatchLine.setAttribute('y2', center.y);
-      activeMatchLine.setAttribute('stroke', '#3B82F6');
-      activeMatchLine.setAttribute('stroke-width', '4');
-      activeMatchLine.setAttribute('stroke-linecap', 'round');
-      matchSvg.appendChild(activeMatchLine);
-    }
-
-    function moveMatch(e) {
-      if (!isDrawingMatch || !activeMatchLine) return;
-      e.preventDefault();
-      const boardRect = matchBoard.getBoundingClientRect();
-      const touch = e.touches ? e.touches[0] : e;
-      const x = touch.clientX - boardRect.left;
-      const y = touch.clientY - boardRect.top;
-      activeMatchLine.setAttribute('x2', x);
-      activeMatchLine.setAttribute('y2', y);
-    }
-
-function endMatch(e) {
-  if (!isDrawingMatch) return;
-  isDrawingMatch = false;
-  
-  const touch = e.changedTouches ? e.changedTouches[0] : e;
-  const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
-  const targetMatch = targetEl ? targetEl.closest('.match-right') : null;
-
-  if (targetMatch && !targetMatch.classList.contains('matched')) {
-    if (currentStartMatch.dataset.match === targetMatch.dataset.match) {
-      playSuccess();
-      currentStartMatch.classList.add('matched');
-      targetMatch.classList.add('matched');
-      activeMatchLine.setAttribute('stroke', '#10B981');
-      completedMatchLines.push({ line: activeMatchLine, startEl: currentStartMatch, endEl: targetMatch });
-      matchScore++;
-    } else {
-      playError();
-      activeMatchLine.setAttribute('stroke', '#EF4444');
-      completedMatchLines.push({ line: activeMatchLine, startEl: currentStartMatch, endEl: targetMatch });
-    }
-  } else {
-    activeMatchLine.remove();
-  }
-  activeMatchLine = null;
-}
-
-    document.querySelectorAll('.match-left').forEach(item => { 
-        item.addEventListener('mousedown', startMatch); 
-        item.addEventListener('touchstart', startMatch); 
+    document.querySelectorAll('.clothes-drag-item').forEach(item => {
+        item.addEventListener('dragstart', () => {
+            if (item.classList.contains('placed')) return;
+            draggedClothes = item;
+            setTimeout(() => item.style.opacity = '0.4', 0);
+        });
+        item.addEventListener('dragend', () => {
+            if (!item.classList.contains('placed')) item.style.opacity = '1';
+            draggedClothes = null;
+        });
+        item.addEventListener('touchstart', bedroomTouchStart, { passive: false });
+        item.addEventListener('touchmove', bedroomTouchMove, { passive: false });
+        item.addEventListener('touchend', bedroomTouchEnd);
     });
-    matchBoard.addEventListener('mousemove', moveMatch); 
-    matchBoard.addEventListener('touchmove', moveMatch);
-    window.addEventListener('mouseup', endMatch); 
-    window.addEventListener('touchend', endMatch);
 
-    window.addEventListener('resize', () => {
-       completedMatchLines.forEach(item => {
-           const p1 = getMatchCenter(item.startEl); 
-           const p2 = getMatchCenter(item.endEl);
-           item.line.setAttribute('x1', p1.x); 
-           item.line.setAttribute('y1', p1.y);
-           item.line.setAttribute('x2', p2.x); 
-           item.line.setAttribute('y2', p2.y);
-       });
+    document.querySelectorAll('.dz-box').forEach(zone => {
+        zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            if (!zone.classList.contains('filled')) zone.classList.add('drag-over');
+        });
+        zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+        zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            if (!draggedClothes || zone.classList.contains('filled')) return;
+            handleBedroomDrop(zone, draggedClothes);
+        });
     });
+
+    function handleBedroomDrop(zone, sourceItem) {
+        if (zone.getAttribute('data-target') === sourceItem.getAttribute('data-word')) {
+            playSuccess();
+            const img = sourceItem.querySelector('img').cloneNode(true);
+            img.style.cssText = 'width:80%; height:85px; object-fit:contain;';
+            zone.innerHTML = '';
+            zone.appendChild(img);
+            zone.classList.add('filled');
+            sourceItem.classList.add('placed');
+            sourceItem.setAttribute('draggable', 'false');
+            sourceItem.style.opacity = '0.35';
+            sourceItem.style.cursor = 'default';
+            bedroomScore++;
+            if (bedroomScore === 6) {
+                document.getElementById('feedback-bedroom').style.color = '#059669';
+                document.getElementById('feedback-bedroom').textContent = 'أحسنت! لقد وضعت جميع الملابس في مكانها الصحيح 🏆';
+            }
+        } else {
+            playError();
+            const fb = document.getElementById('feedback-bedroom');
+            fb.style.color = '#DC2626';
+            fb.textContent = 'حاول مرة أخرى!';
+            setTimeout(() => { fb.textContent = ''; }, 1500);
+        }
+    }
+
+    function bedroomTouchStart(e) {
+        if (this.classList.contains('placed')) return;
+        touchDragItem = this; draggedClothes = this;
+        const touch = e.touches[0];
+        touchClone = this.cloneNode(true);
+        touchClone.style.cssText = `position:fixed;width:105px;height:95px;opacity:0.85;pointer-events:none;z-index:9999;top:${touch.clientY - 47}px;left:${touch.clientX - 52}px;border-radius:12px;background:white;box-shadow:0 8px 24px rgba(0,0,0,0.2);`;
+        document.body.appendChild(touchClone);
+        this.style.opacity = '0.4';
+        e.preventDefault();
+    }
+
+    function bedroomTouchMove(e) {
+        if (!touchClone) return;
+        const touch = e.touches[0];
+        touchClone.style.top = (touch.clientY - 47) + 'px';
+        touchClone.style.left = (touch.clientX - 52) + 'px';
+        e.preventDefault();
+    }
+
+    function bedroomTouchEnd(e) {
+        if (!touchClone || !touchDragItem) return;
+        const touch = e.changedTouches[0];
+        touchClone.remove(); touchClone = null;
+        const el = document.elementFromPoint(touch.clientX, touch.clientY);
+        const zone = el ? el.closest('.dz-box') : null;
+        if (zone && !zone.classList.contains('filled')) {
+            handleBedroomDrop(zone, touchDragItem);
+        } else {
+            if (!touchDragItem.classList.contains('placed')) touchDragItem.style.opacity = '1';
+        }
+        touchDragItem = null; draggedClothes = null;
+    }
 
 // --- MAZE GAME LOGIC ---
     const mazeTemplate = [
@@ -1422,18 +1507,18 @@ function endMatch(e) {
     let currentMazeCorrectAnswer = "";
 
     const mazeQuestions = [
-        { text: "قَمِيص",    correctImg: DR_BASE+"06362.png", wrongImgs: [DR_BASE+"06364.png", DR_BASE+"06366.png"] },
-        { text: "بَنْطَلُون", correctImg: DR_BASE+"06364.png", wrongImgs: [DR_BASE+"06362.png", DR_BASE+"06368.png"] },
-        { text: "فُسْتَان",   correctImg: DR_BASE+"06366.png", wrongImgs: [DR_BASE+"06368.png", DR_BASE+"06376.png"] },
-        { text: "حِذَاء",    correctImg: DR_BASE+"06368.png", wrongImgs: [DR_BASE+"06362.png", DR_BASE+"06370.png"] },
-        { text: "قُبَّعَة",   correctImg: DR_BASE+"06370.png", wrongImgs: [DR_BASE+"06368.png", DR_BASE+"06372.png"] },
-        { text: "مِعْطَف",    correctImg: DR_BASE+"06372.png", wrongImgs: [DR_BASE+"06370.png", DR_BASE+"06374.png"] },
-        { text: "جَوَارِب",   correctImg: DR_BASE+"06374.png", wrongImgs: [DR_BASE+"06372.png", DR_BASE+"06376.png"] },
-        { text: "تَنُّورَة",  correctImg: DR_BASE+"06376.png", wrongImgs: [DR_BASE+"06374.png", DR_BASE+"06366.png"] },
-        { text: "كَنْزَة",    correctImg: DR_BASE+"05731.png", wrongImgs: [DR_BASE+"06372.png", DR_BASE+"06376.png"] },
-        { text: "حِزَام",    correctImg: DR_BASE+"05733.png", wrongImgs: [DR_BASE+"06368.png", DR_BASE+"06364.png"] },
-        { text: "شَال",      correctImg: DR_BASE+"01729.png", wrongImgs: [DR_BASE+"05731.png", DR_BASE+"06362.png"] },
-        { text: "قُفَّاز",    correctImg: DR_BASE+"0928.png",  wrongImgs: [DR_BASE+"06374.png", DR_BASE+"01729.png"] }
+        { text: "قَمِيص",    correctImg: GITHUB_BASE+"shirt.png",  wrongImgs: [GITHUB_BASE+"pants.png",  GITHUB_BASE+"dress.png"] },
+        { text: "بَنْطَلُون", correctImg: GITHUB_BASE+"pants.png",  wrongImgs: [GITHUB_BASE+"shirt.png",  GITHUB_BASE+"shoes.png"] },
+        { text: "فُسْتَان",   correctImg: GITHUB_BASE+"dress.png",  wrongImgs: [GITHUB_BASE+"shoes.png",  GITHUB_BASE+"coat.png"] },
+        { text: "حِذَاء",    correctImg: GITHUB_BASE+"shoes.png",  wrongImgs: [GITHUB_BASE+"shirt.png",  GITHUB_BASE+"hat.png"] },
+        { text: "قُبَّعَة",   correctImg: GITHUB_BASE+"hat.png",    wrongImgs: [GITHUB_BASE+"shoes.png",  GITHUB_BASE+"coat.png"] },
+        { text: "مِعْطَف",    correctImg: GITHUB_BASE+"coat.png",   wrongImgs: [GITHUB_BASE+"hat.png",    GITHUB_BASE+"pants.png"] },
+        { text: "جَوَارِب",   correctImg: DR_BASE+"06374.png", wrongImgs: [DR_BASE+"06376.png",  GITHUB_BASE+"shoes.png"] },
+        { text: "تَنُّورَة",  correctImg: DR_BASE+"06376.png", wrongImgs: [DR_BASE+"06374.png",  GITHUB_BASE+"dress.png"] },
+        { text: "كَنْزَة",    correctImg: DR_BASE+"05731.png", wrongImgs: [GITHUB_BASE+"coat.png", DR_BASE+"06376.png"] },
+        { text: "حِزَام",    correctImg: DR_BASE+"05733.png", wrongImgs: [GITHUB_BASE+"shoes.png", GITHUB_BASE+"pants.png"] },
+        { text: "شَال",      correctImg: DR_BASE+"01729.png", wrongImgs: [DR_BASE+"05731.png",  GITHUB_BASE+"shirt.png"] },
+        { text: "قُفَّاز",    correctImg: DR_BASE+"0928.png",  wrongImgs: [DR_BASE+"06374.png",  DR_BASE+"01729.png"] }
     ];
 
     function initMazeBoard() {
