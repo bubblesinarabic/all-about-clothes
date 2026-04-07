@@ -345,7 +345,7 @@
         
         <div class="profile-setup-box">
             <div class="profile-img-preview">
-                <img id="setup-preview-img" src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/girl.png" alt="صورة الملف">
+                <img id="setup-preview-img" src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/girl.svg" alt="صورة الملف">
             </div>
             
             <input type="text" id="globalStudentName" class="cert-input" placeholder="اكتب اسمك هنا..." oninput="updateGlobalData()">
@@ -469,7 +469,7 @@
         <div class="word-bank" id="fill-word-bank">
           <div class="fill-draggable" draggable="true" data-word="ghurfatnawm">غُرْفَةُ النَّوْم</div>
           <div class="fill-draggable" draggable="true" data-word="qamees">قَمِيص</div>
-          <div class="fill-draggable" draggable="true" data-word="bantaloon">بَنْطَلُون</div>
+          <div class="fill-draggable" draggable="true" data-word="bantaloon">بَنطال</div>
           <div class="fill-draggable" draggable="true" data-word="fustaan">فُسْتَان</div>
           <div class="fill-draggable" draggable="true" data-word="hithaa">حِذَاء</div>
         </div>
@@ -518,7 +518,7 @@
         <div id="drag-source-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 12px; border: 2px solid #E2E8F0;">
           <div class="draggable" draggable="true" data-type="room">غُرْفَةُ النَّوْم</div>
           <div class="draggable" draggable="true" data-type="clothes">قَمِيص</div>
-          <div class="draggable" draggable="true" data-type="clothes">بَنْطَلُون</div>
+          <div class="draggable" draggable="true" data-type="clothes">بنطال</div>
           <div class="draggable" draggable="true" data-type="clothes">فُسْتَان</div>
           <div class="draggable" draggable="true" data-type="clothes">حِذَاء</div>
           <div class="draggable" draggable="true" data-type="clothes">قُبَّعَة</div>
@@ -583,7 +583,7 @@
             <div class="match-col">
                 <div class="match-item match-left" data-match="ghurfatnawm">غُرْفَةُ النَّوْم</div>
                 <div class="match-item match-left" data-match="qamees">قَمِيص</div>
-                <div class="match-item match-left" data-match="bantaloon">بَنْطَلُون</div>
+                <div class="match-item match-left" data-match="bantaloon">بنطال</div>
                 <div class="match-item match-left" data-match="fustaan">فُسْتَان</div>
                 <div class="match-item match-left" data-match="hithaa">حِذَاء</div>
                 <div class="match-item match-left" data-match="qubbaa">قُبَّعَة</div>
@@ -597,7 +597,7 @@
                 <div class="match-item match-right" data-match="hithaa"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/shoes.png" alt="حذاء"></div>
                 <div class="match-item match-right" data-match="fustaan"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/dress.png" alt="فستان"></div>
                 <div class="match-item match-right" data-match="qamees"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/shirt.png" alt="قميص"></div>
-                <div class="match-item match-right" data-match="bantaloon"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/pants.png" alt="بنطلون"></div>
+                <div class="match-item match-right" data-match="bantaloon"><img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/pants.png" alt="بنطال"></div>
             </div>
         </div>
         <div class="feedback" id="feedback-match"></div>
@@ -874,7 +874,7 @@
     const vocabDict = {
       "غرفة النوم": { type:"noun", base:"غرفة النوم", textToSpeak:"غُرْفَةُ النَّوْم", meaning:"Bedroom", transliteration:"Ghurfat al-nawm", img: DR_BASE+"bedroom.png", color:"#14B8A6", bg:"#F0FDFA" },
       "قميص":   { type:"noun", base:"قميص",   textToSpeak:"قَمِيص",   meaning:"Shirt",    transliteration:"Qamees",    img: DR_BASE+"shirt.png", color:"#3B82F6", bg:"#EFF6FF", audioUrl: GITHUB_BASE+"qamees.mp3" },
-      "بنطلون": { type:"noun", base:"بنطلون", textToSpeak:"بَنْطَلُون", meaning:"Pants",    transliteration:"Bantaloon", img: DR_BASE+"pants.png", color:"#1E293B", bg:"#F8FAFC", audioUrl: GITHUB_BASE+"bantaloon.mp3" },
+      "بنطال": { type:"noun", base:"بنطال", textToSpeak:"بنطال", meaning:"Pants",    transliteration:"Bintal", img: DR_BASE+"pants.png", color:"#1E293B", bg:"#F8FAFC", audioUrl: GITHUB_BASE+"bantaloon.mp3" },
       "فستان":  { type:"noun", base:"فستان",  textToSpeak:"فُسْتَان",  meaning:"Dress",    transliteration:"Fustaan",   img: DR_BASE+"dress.png", color:"#FF1493", bg:"#FFF0F8", audioUrl: GITHUB_BASE+"fustaan.mp3" },
       "حذاء":   { type:"noun", base:"حذاء",   textToSpeak:"حِذَاء",   meaning:"Shoe",     transliteration:"Hithaa'",   img: DR_BASE+"shoes.png", color:"#8B4513", bg:"#FFF5E5", audioUrl: GITHUB_BASE+"hithaa.mp3" },
       "قبعة":   { type:"noun", base:"قبعة",   textToSpeak:"قُبَّعَة",  meaning:"Hat",      transliteration:"Qubba'a",   img: DR_BASE+"hat.png", color:"#F59E0B", bg:"#FFFBEB", audioUrl: GITHUB_BASE+"qubba.mp3" },
@@ -883,7 +883,7 @@
 
     const aliases = [
       ["غرفتي", "غرفة النوم"], ["غرفة", "غرفة النوم"], ["النوم", "غرفة النوم"],
-      ["قميصاً", "قميص"], ["بنطلوني", "بنطلون"], ["بنطال", "بنطلون"], ["فستاناً", "فستان"],
+      ["قميصاً", "قميص"], ["بنطلوني", "بنطال"], ["بنطال", "بنطلون"], ["فستاناً", "فستان"],
       ["حذائي", "حذاء"], ["قبعتي", "قبعة"], ["معطفاً", "معطف"]
     ];
 
@@ -1023,7 +1023,7 @@
     const flashcardsData = [
       { word: "غُرْفَةُ النَّوْم", meaning: "Bedroom", imgFull: DR_BASE+"bedroom.png" },
       { word: "قَمِيص",    meaning: "Shirt",   imgFull: DR_BASE+"shirt.png" },
-      { word: "بَنْطَلُون", meaning: "Pants",   imgFull: DR_BASE+"pants.png" },
+      { word: "بنطال", meaning: "Pants",   imgFull: DR_BASE+"pants.png" },
       { word: "فُسْتَان",   meaning: "Dress",   imgFull: DR_BASE+"dress.png" },
       { word: "حِذَاء",    meaning: "Shoe",    imgFull: DR_BASE+"shoes.png" },
       { word: "قُبَّعَة",   meaning: "Hat",     imgFull: DR_BASE+"hat.png" },
@@ -1058,7 +1058,7 @@
     const spellingLevels = [
       { target: "غرفة", clue: "غرفة النوم", letters: ["ة", "ف", "ر", "غ"] },
       { target: "قميص", clue: "Shirt", letters: ["ص", "ي", "م", "ق"] },
-      { target: "بنطلون", clue: "Pants", letters: ["ن", "و", "ل", "ط", "ن", "ب"] },
+      { target: "بنطال", clue: "Pants", letters: ["ن", "و", "ل", "ط", "ن", "ب"] },
       { target: "فستان", clue: "Dress", letters: ["ن", "ا", "ت", "س", "ف"] },
       { target: "حذاء", clue: "Shoe", letters: ["ء", "ا", "ذ", "ح"] },
       { target: "قبعة", clue: "Hat", letters: ["ة", "ع", "ب", "ق"] },
