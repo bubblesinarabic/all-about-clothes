@@ -640,31 +640,27 @@
           <div class="hotspot-container">
             <img src="https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/الملابس/dr/hotspot.png" alt="غرفة النوم" class="hotspot-img" id="finderImg" style="pointer-events: auto;">
 
-            <div class="hotspot" data-word="غرفة النوم" style="top: 20%; left: 50%;">
+            <div class="hotspot" data-word="قبعة" style="top: 24.6%; left: 87.8%;">
               <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>غُرْفَةُ النَّوْم</span></div>
+              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>قبعة</span></div>
             </div>
-            <div class="hotspot" data-word="قميص" style="top: 35%; left: 25%;">
+            <div class="hotspot" data-word="قميص" style="top: 37.7%; left: 75.8%;">
               <div class="hotspot-circle"></div>
               <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>قَمِيص</span></div>
             </div>
-            <div class="hotspot" data-word="بنطلون" style="top: 55%; left: 28%;">
+            <div class="hotspot" data-word="بنطال" style="top: 37.7%; left: 63.0%;">
               <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>بَنْطَلُون</span></div>
+              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>بنطال</span></div>
             </div>
-            <div class="hotspot" data-word="فستان" style="top: 38%; left: 75%;">
+            <div class="hotspot" data-word="فستان" style="top: 34.7%; left: 17.5%;">
               <div class="hotspot-circle"></div>
               <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>فُسْتَان</span></div>
             </div>
-            <div class="hotspot" data-word="قبعة" style="top: 12%; left: 22%;">
-              <div class="hotspot-circle"></div>
-              <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>قُبَّعَة</span></div>
-            </div>
-            <div class="hotspot" data-word="معطف" style="top: 30%; left: 55%;">
+            <div class="hotspot" data-word="معطف" style="top: 34.3%; left: 34.4%;">
               <div class="hotspot-circle"></div>
               <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>مِعْطَف</span></div>
             </div>
-            <div class="hotspot" data-word="حذاء" style="top: 82%; left: 35%;">
+            <div class="hotspot" data-word="حذاء" style="top: 80.9%; left: 29.0%;">
               <div class="hotspot-circle"></div>
               <div class="hotspot-label"><i data-lucide="volume-2" style="width:18px; height:18px;"></i><span>حِذَاء</span></div>
             </div>
@@ -707,7 +703,7 @@
           <p class="instruction" style="font-size: 22px;">لقد أكملت الأنشطة بنجاح. هديتك جاهزة الآن!</p>
           
           <div style="text-align: center; margin-bottom: 20px;">
-             <button class="nav-btn" id="downloadCertBtn" style="background: #8B5CF6; font-size: 20px; padding: 15px 40px; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);" onclick="downloadCertificate()">📥 تحميل شهادة التميز</button>
+              <button class="nav-btn" id="downloadCertBtn" style="background: #8B5CF6; font-size: 20px; padding: 15px 40px; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);" onclick="downloadCertificate()">📥 تحميل شهادة التميز</button>
           </div>
 
           <div class="cert-preview-scroll">
@@ -1080,10 +1076,8 @@
     }
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('fc-icon-container').innerHTML = `<img src="${DR_BASE}bedroom.png">`;
-        puzzleState.pieceOrder.puzzle1 = shuffleArray([0,1,2,3,4,5]);
-        puzzleState.pieceOrder.puzzle2 = shuffleArray([0,1,2,3,4,5]);
         renderPuzzleToolbar();
-        renderPuzzleBoard();
+        loadPuzzle(1);
         initMazeBoard(); 
         lucide.createIcons();
     });
@@ -1471,11 +1465,6 @@
         isCurrentlyDragging = false;
         draggedPiece = null;
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      renderPuzzleToolbar();
-      loadPuzzle(1);
-    });
 
     // --- إعدادات أداة الرسم والتلوين ---
     const canvas = document.getElementById('paintCanvas');
