@@ -151,10 +151,34 @@
     .word-bank { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; background: #fff; padding: 20px; border-radius: 16px; border: 2px solid #E2E8F0; }
     .fill-draggable { background: white; border: 2px solid var(--secondary); padding: 8px 20px; border-radius: 8px; cursor: grab; font-weight: bold; font-size: 18px; color: var(--secondary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: inline-block;}
 
-    /* --- التصنيف (Sorting) --- */
-    .sort-zone { flex: 1; min-height: 180px; border: 3px dashed #CBD5E1; border-radius: 16px; padding: 15px; background: #F8FAFC; text-align: center; transition: background 0.2s;}
-    .draggable { background: white; border: 2px solid var(--secondary); padding: 8px 16px; border-radius: 8px; cursor: grab; font-weight: bold; display: inline-block; margin: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);}
-    .dropped-items-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 15px; }
+    /* --- الأحجية المصورة (Puzzle) --- */
+    .puzzle-toolbar { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+    .puzzle-switch-btn { background:#fff; border:2px solid #BFDBFE; color:var(--secondary); padding:10px 18px; border-radius:12px; font-family:inherit; font-weight:800; cursor:pointer; transition:0.2s; }
+    .puzzle-switch-btn.active { background:var(--secondary); color:#fff; border-color:var(--secondary); }
+    .puzzle-switch-btn.done { border-color:var(--primary); color:var(--primary-hover); background:#F0FDF4; }
+    .puzzle-main { display:grid; grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr); gap:20px; align-items:start; }
+    .puzzle-card { background:#fff; border:2px solid #E2E8F0; border-radius:18px; padding:18px; box-shadow:0 8px 18px rgba(15,23,42,0.05); }
+    .puzzle-card h3 { margin:0 0 12px; color:var(--secondary); text-align:center; }
+    .puzzle-actions { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+    .hint-box { display:none; text-align:center; background:#FFF8F0; border:2px dashed #FDBA74; border-radius:16px; padding:12px; margin-bottom:14px; }
+    .hint-box.show { display:block; }
+    .hint-box img { width:100%; max-width:220px; border-radius:12px; border:3px solid #fff; box-shadow:0 6px 14px rgba(0,0,0,0.12); background:#fff; }
+    .hint-box p { margin:10px 0 0; font-weight:700; color:#9A3412; }
+    .puzzle-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; width:min(100%, 360px); margin:0 auto; direction:ltr; }
+    .puzzle-slot, .puzzle-piece { aspect-ratio:1 / 1; border-radius:14px; overflow:hidden; position:relative; }
+    .puzzle-slot { background:#F8FAFC; border:3px dashed #CBD5E1; }
+    .puzzle-slot.correct { border-color:#10B981; background:#ECFDF5; }
+    .puzzle-slot.over { background:#DBEAFE; border-color:var(--secondary); }
+    .puzzle-piece { background:linear-gradient(180deg, #fff, #F8FAFC); border:3px solid #BFDBFE; cursor:grab; box-shadow:0 4px 10px rgba(0,0,0,0.08); }
+    .puzzle-piece:active { cursor:grabbing; }
+    .puzzle-piece.placed { cursor:default; border-color:#10B981; box-shadow:none; }
+    .puzzle-piece img { position:absolute; width:300%; height:200%; max-width:none; user-select:none; -webkit-user-drag:none; pointer-events:none; }
+    .puzzle-piece.locked img { opacity:1; }
+    .puzzle-status { text-align:center; font-weight:800; color:var(--secondary); margin-top:14px; }
+    .puzzle-feedback { margin-top:15px; font-weight:bold; font-size:18px; min-height:27px; text-align:center; }
+    @media (max-width: 860px) {
+      .puzzle-main { grid-template-columns:1fr; }
+    }
     
     /* --- أداة الرسم (Canvas) --- */
     .canvas-wrapper { text-align: center; }
@@ -375,7 +399,7 @@
           <button class="menu-btn" onclick="goToSlide(3)"><i data-lucide="library"></i> البطاقات التعليمية</button>
           <button class="menu-btn" onclick="goToSlide(4)"><i data-lucide="spell-check"></i> ترتيب الحروف</button>
           <button class="menu-btn" onclick="goToSlide(5)"><i data-lucide="edit-3"></i> أكمل الفراغ</button>
-          <button class="menu-btn" onclick="goToSlide(6)"><i data-lucide="arrow-down-up"></i> ملابس شتوية وصيفية</button>
+          <button class="menu-btn" onclick="goToSlide(6)"><i data-lucide="image"></i> رَكِّبِ الصُّورَة</button>
           <button class="menu-btn" onclick="goToSlide(7)"><i data-lucide="palette"></i> لوّن المشهد</button>
           <button class="menu-btn" onclick="goToSlide(8)"><i data-lucide="link"></i> صل الكلمة بالصورة</button>
           <button class="menu-btn" onclick="goToSlide(9)"><i data-lucide="map-pin"></i> اكتشف الصورة</button>
@@ -510,32 +534,35 @@
 
       <div class="slide" id="slide-6">
         <div class="slide-header">
-          <h2>خامساً: صَنِّف الكلمات (7 نقاط)</h2>
+          <h2>خامساً: رَكِّبِ الصُّورَة (7 نقاط)</h2>
           <button class="back-menu-btn" onclick="goToFirstCard()"><i data-lucide="home" style="width:18px; height:18px;"></i> القائمة</button>
         </div>
-        <p class="instruction">اسحب الكلمات إلى الصندوق الصحيح: غرفة النوم أو الملابس.</p>
+        <p class="instruction">رتّب القطع الست لتكوين الصورة الصحيحة، ثم انتقل إلى الصورة الثانية. يمكنك استخدام التلميح عند الحاجة.</p>
 
-        <div id="drag-source-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 12px; border: 2px solid #E2E8F0;">
-          <div class="draggable" draggable="true" data-type="room">غُرْفَةُ النَّوْم</div>
-          <div class="draggable" draggable="true" data-type="clothes">قَمِيص</div>
-          <div class="draggable" draggable="true" data-type="clothes">بنطال</div>
-          <div class="draggable" draggable="true" data-type="clothes">فُسْتَان</div>
-          <div class="draggable" draggable="true" data-type="clothes">حِذَاء</div>
-          <div class="draggable" draggable="true" data-type="clothes">قُبَّعَة</div>
-          <div class="draggable" draggable="true" data-type="clothes">مِعْطَف</div>
-        </div>
+        <div class="puzzle-toolbar" id="puzzle-toolbar"></div>
 
-        <div style="display: flex; gap: 20px;">
-          <div class="sort-zone" data-target="room">
-            <h3>غُرْفَةُ النَّوْم 🛏️</h3>
-            <div class="dropped-items-container" id="zone-room-items"></div>
+        <div class="puzzle-main">
+          <div class="puzzle-card">
+            <h3 id="puzzle-title">الصورة 1</h3>
+            <div class="puzzle-actions">
+              <button class="nav-btn" style="background:#F59E0B;" onclick="togglePuzzleHint()">💡 إظهار التلميح</button>
+              <button class="nav-btn" style="background:#EF4444;" onclick="resetCurrentPuzzle()">🔄 إعادة القطع</button>
+            </div>
+            <div class="hint-box" id="puzzle-hint-box">
+              <img id="puzzle-hint-image" alt="تلميح الأحجية">
+              <p>تلميح: ابدأ بقطع الزوايا، ثم أكمل الصفوف حتى تكتمل الصورة.</p>
+            </div>
+            <div class="puzzle-grid" id="puzzle-board"></div>
+            <div class="puzzle-status" id="puzzle-progress-text">اكتمل 0 من 2</div>
           </div>
-          <div class="sort-zone" data-target="clothes">
-            <h3>مَلَابِس 👕</h3>
-            <div class="dropped-items-container" id="zone-clothes-items"></div>
+
+          <div class="puzzle-card">
+            <h3>قطع الصورة</h3>
+            <p class="instruction" style="text-align:center; margin-top:0;">اسحب كل قطعة إلى مكانها الصحيح. سيُسمع صوت عند إفلات القطعة.</p>
+            <div class="puzzle-grid" id="puzzle-pieces-bank"></div>
+            <div class="puzzle-feedback" id="feedback-puzzle"></div>
           </div>
         </div>
-        <div class="feedback" id="feedback-sort"></div>
       </div>
 
       <div class="slide" id="slide-7">
@@ -741,7 +768,7 @@
     const totalSlides = slides.length; 
     const dotsContainer = document.getElementById('dots-container');
     const footer = document.getElementById('main-footer');
-    let correctlySorted = 0; let currentSpellLevel = 0; let matchScore = 0; let mazeScore = 0;
+    let puzzleScore = 0; let currentSpellLevel = 0; let matchScore = 0; let mazeScore = 0;
 
     for(let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
@@ -754,7 +781,7 @@
     function calculateFinalScore() {
       const fillScore = document.querySelectorAll('.blank-slot.correct').length;
       const spellingScore = Math.min(currentSpellLevel, 7); 
-      const totalScore = fillScore + spellingScore + correctlySorted + matchScore + mazeScore;
+      const totalScore = fillScore + spellingScore + puzzleScore + matchScore + mazeScore;
       document.getElementById('final-score-text').textContent = totalScore + " / 33";
       document.getElementById('certScoreDisplay').textContent = totalScore + " / 33";
     }
@@ -1053,6 +1080,10 @@
     }
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('fc-icon-container').innerHTML = `<img src="${DR_BASE}bedroom.png">`;
+        puzzleState.pieceOrder.puzzle1 = shuffleArray([0,1,2,3,4,5]);
+        puzzleState.pieceOrder.puzzle2 = shuffleArray([0,1,2,3,4,5]);
+        renderPuzzleToolbar();
+        renderPuzzleBoard();
         initMazeBoard(); 
         lucide.createIcons();
     });
@@ -1178,40 +1209,272 @@
       });
     });
 
-    // --- السحب والإفلات للتصنيف ---
-    const draggables = document.querySelectorAll('.draggable');
-    const dropZones = document.querySelectorAll('.sort-zone');
-    let draggedItem = null;
+    // --- لعبة الأحجية المصورة ---
+    const puzzleConfigs = [
+      { id: 1, key: 'puzzle1', title: 'الصورة 1' },
+      { id: 2, key: 'puzzle2', title: 'الصورة 2' }
+    ];
 
-    draggables.forEach(d => {
-      d.addEventListener('dragstart', (e) => { 
-          draggedItem = d; 
-          setTimeout(() => d.style.display = 'none', 0); 
+    const puzzleCompletion = { 1: false, 2: false };
+    let currentPuzzleId = 1;
+    let puzzlePiecesPlaced = 0;
+    let isCurrentlyDragging = false;
+    let draggedPiece = null;
+
+    function getPuzzleConfig(puzzleId) {
+      return puzzleConfigs.find(cfg => cfg.id === Number(puzzleId)) || puzzleConfigs[0];
+    }
+
+    function renderPuzzleToolbar() {
+      const toolbar = document.getElementById('puzzle-toolbar');
+      if (!toolbar) return;
+      toolbar.innerHTML = '';
+      puzzleConfigs.forEach(cfg => {
+        const btn = document.createElement('button');
+        btn.className = 'puzzle-switch-btn';
+        btn.dataset.pid = String(cfg.id);
+        if (cfg.id === currentPuzzleId) btn.classList.add('active');
+        if (puzzleCompletion[cfg.id]) btn.classList.add('done');
+        btn.textContent = puzzleCompletion[cfg.id] ? `${cfg.title} ✓` : cfg.title;
+        btn.onclick = () => loadPuzzle(cfg.id);
+        toolbar.appendChild(btn);
       });
-      d.addEventListener('dragend', (e) => { e.target.style.display = 'inline-block'; draggedItem = null; });
-    });
+    }
 
-    dropZones.forEach(zone => {
-      zone.addEventListener('dragover', e => { e.preventDefault(); zone.style.background = "#E2E8F0"; });
-      zone.addEventListener('dragleave', () => { zone.style.background = "#F8FAFC"; });
-      zone.addEventListener('drop', e => {
-        e.preventDefault(); zone.style.background = "#F8FAFC";
-        if (draggedItem) {
-          playPop(); 
-          if (zone.getAttribute('data-target') === draggedItem.getAttribute('data-type')) {
-            playSuccess(); draggedItem.style.display = 'inline-block'; 
-            const itemsContainer = zone.querySelector('.dropped-items-container');
-            itemsContainer.appendChild(draggedItem); 
-            draggedItem.setAttribute('draggable', 'false');
-            draggedItem.style.borderColor = '#10B981'; draggedItem.style.background = '#D1FAE5'; draggedItem.style.cursor = 'default'; 
-            correctlySorted++; draggedItem = null; 
-            if(correctlySorted === 7) { document.getElementById('feedback-sort').style.color = "#059669"; document.getElementById('feedback-sort').textContent = "بطل! لقد صنفت الكلمات السبع بنجاح 🏆"; }
-          } else {
-            playError(); const fb = document.getElementById('feedback-sort');
-            fb.style.color = "#DC2626"; fb.textContent = "حاول مرة أخرى!"; setTimeout(() => { fb.textContent = ""; }, 1500);
-          }
+    function setPuzzleImageSource(imgEl, puzzleId) {
+        const repoBase = "https://raw.githubusercontent.com/bubblesinarabic/all-about-clothes/main/%D8%A7%D9%84%D9%85%D9%84%D8%A7%D8%A8%D8%B3/dr/";
+        const idNum = Number(puzzleId);
+        const sources = idNum === 1
+          ? [
+              `${repoBase}puzzle1.png`
+            ]
+          : [
+              `${repoBase}puzzle2.svg`
+            ];
+        let currentIndex = 0;
+        function tryNext() {
+            if (currentIndex >= sources.length) return;
+            imgEl.src = sources[currentIndex++];
         }
-      });
+        imgEl.onerror = tryNext;
+        tryNext();
+    }
+
+    function createPuzzleImage(puzzleId, row, col) {
+        const img = document.createElement('img');
+        img.alt = 'قطعة أحجية';
+        img.style.left = `-${col * 100}%`;
+        img.style.top = `-${row * 100}%`;
+        img.style.transform = 'none';
+        setPuzzleImageSource(img, puzzleId);
+        return img;
+    }
+
+    function togglePuzzleHint() {
+      playPop();
+      const box = document.getElementById('puzzle-hint-box');
+      if (!box) return;
+      box.classList.toggle('show');
+    }
+
+    function updatePuzzleProgress() {
+      const progressEl = document.getElementById('puzzle-progress-text');
+      if (!progressEl) return;
+      const completedCount = Object.values(puzzleCompletion).filter(Boolean).length;
+      progressEl.textContent = `اكتمل ${completedCount} من 2`;
+    }
+
+    function resetCurrentPuzzle() {
+      playPop();
+      loadPuzzle(currentPuzzleId, true);
+    }
+
+    function loadPuzzle(puzzleId, forceReload = false) {
+        currentPuzzleId = Number(puzzleId);
+        puzzlePiecesPlaced = 0;
+        isCurrentlyDragging = false;
+        draggedPiece = null;
+
+        const feedbackEl = document.getElementById('feedback-puzzle');
+        if (feedbackEl) {
+          feedbackEl.textContent = '';
+          feedbackEl.style.color = 'var(--text-dark)';
+        }
+
+        const titleEl = document.getElementById('puzzle-title');
+        if (titleEl) titleEl.textContent = getPuzzleConfig(currentPuzzleId).title;
+
+        const hintImg = document.getElementById('puzzle-hint-image');
+        if (hintImg) setPuzzleImageSource(hintImg, currentPuzzleId);
+
+        const hintBox = document.getElementById('puzzle-hint-box');
+        if (hintBox && forceReload) hintBox.classList.remove('show');
+
+        renderPuzzleToolbar();
+        updatePuzzleProgress();
+
+        const statusEl = document.getElementById('puzzle-status') || document.getElementById('puzzle-progress-text');
+        if (statusEl) statusEl.textContent = 'أكمل الصورة!';
+
+        const grid = document.getElementById('puzzle-board');
+        const piecesContainer = document.getElementById('puzzle-pieces-bank');
+        if(!grid || !piecesContainer) return;
+
+        grid.innerHTML = '';
+        piecesContainer.innerHTML = '';
+
+        const pieces = [];
+        for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 3; col++) {
+                const index = row * 3 + col;
+
+                const slot = document.createElement('div');
+                slot.className = 'puzzle-slot';
+                slot.dataset.slotIndex = index;
+                grid.appendChild(slot);
+
+                const piece = document.createElement('div');
+                piece.className = 'puzzle-piece';
+                piece.draggable = true;
+                piece.dataset.pieceIndex = index;
+                piece.dataset.puzzleId = String(currentPuzzleId);
+                piece.appendChild(createPuzzleImage(currentPuzzleId, row, col));
+                pieces.push(piece);
+            }
+        }
+
+        pieces.sort(() => Math.random() - 0.5).forEach(piece => piecesContainer.appendChild(piece));
+        setupPuzzleDragAndDrop();
+    }
+
+    function setupPuzzleDragAndDrop() {
+        const pieces = document.querySelectorAll('.puzzle-piece:not(.locked)');
+        const slots = document.querySelectorAll('.puzzle-slot');
+
+        pieces.forEach(piece => {
+            piece.addEventListener('dragstart', function(e) {
+                if (isCurrentlyDragging) {
+                    e.preventDefault();
+                    return;
+                }
+                isCurrentlyDragging = true;
+                draggedPiece = this;
+                if (e.dataTransfer) {
+                    e.dataTransfer.setData('text/plain', this.dataset.pieceIndex || '');
+                    const transparentImg = new Image();
+                    transparentImg.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>');
+                    e.dataTransfer.setDragImage(transparentImg, 0, 0);
+                }
+                setTimeout(() => this.style.opacity = '0.5', 0);
+            });
+
+            piece.addEventListener('dragend', function() {
+                isCurrentlyDragging = false;
+                draggedPiece = null;
+                this.style.opacity = '1';
+            });
+
+            piece.addEventListener('touchstart', function(e) {
+                if (isCurrentlyDragging || e.touches.length > 1) return;
+                isCurrentlyDragging = true;
+                draggedPiece = this;
+                this.style.opacity = '0.5';
+            }, {passive: true});
+
+            piece.addEventListener('touchend', function(e) {
+                if(draggedPiece !== this) return;
+
+                this.style.opacity = '1';
+                isCurrentlyDragging = false;
+
+                const touch = e.changedTouches[0];
+                const target = document.elementFromPoint(touch.clientX, touch.clientY);
+                const slot = target ? target.closest('.puzzle-slot') : null;
+
+                if(slot) {
+                     handlePuzzleDrop.call(slot, e);
+                }
+                draggedPiece = null;
+            });
+        });
+
+        slots.forEach(slot => {
+            slot.addEventListener('dragover', e => {
+                e.preventDefault();
+                slot.classList.add('over');
+            });
+            slot.addEventListener('dragleave', () => slot.classList.remove('over'));
+            slot.addEventListener('drop', handlePuzzleDrop);
+        });
+    }
+
+    function handlePuzzleDrop(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (typeof playPop === 'function') playPop();
+        this.classList.remove('over');
+
+        if (!draggedPiece) return;
+
+        const pieceEl = draggedPiece;
+        const pieceIndex = Number(pieceEl.dataset.pieceIndex);
+        const slotIndex = Number(this.dataset.slotIndex);
+        const feedback = document.getElementById('feedback-puzzle');
+
+        if (pieceIndex === slotIndex) {
+            if (typeof playSuccess === "function") playSuccess();
+
+            this.appendChild(pieceEl);
+            this.classList.add('correct');
+            pieceEl.classList.add('placed', 'locked');
+            pieceEl.draggable = false;
+
+            const clone = pieceEl.cloneNode(true);
+            pieceEl.parentNode.replaceChild(clone, pieceEl);
+
+            if(feedback) {
+                feedback.textContent = 'أحسنت! قطعة صحيحة.';
+                feedback.style.color = 'var(--primary)';
+            }
+            puzzlePiecesPlaced++;
+
+            const statusEl = document.getElementById('puzzle-status') || document.getElementById('puzzle-progress-text');
+            if(statusEl) statusEl.textContent = `تم وضع ${puzzlePiecesPlaced} من 6 قطع`;
+
+            if (puzzlePiecesPlaced === 6) {
+                puzzleCompletion[currentPuzzleId] = true;
+                renderPuzzleToolbar();
+                updatePuzzleProgress();
+
+                const doneCount = Object.values(puzzleCompletion).filter(Boolean).length;
+                if (doneCount === 2) {
+                  puzzleScore = 7;
+                  if (typeof playSuccess === "function") playSuccess();
+                  if(feedback) {
+                    feedback.textContent = 'رائع! لقد أكملت الصورتين بنجاح.';
+                    feedback.style.color = '#059669';
+                  }
+                } else {
+                  if(feedback) {
+                    feedback.textContent = 'رائع! لقد أكملت الصورة بنجاح. انتقل الآن إلى الصورة الثانية.';
+                    feedback.style.color = '#059669';
+                  }
+                }
+            }
+        } else {
+            if (typeof playError === "function") playError();
+            if(feedback) {
+                feedback.textContent = 'حاول مرة أخرى! هذه القطعة لا تنتمي هنا.';
+                feedback.style.color = '#EF4444';
+            }
+        }
+
+        isCurrentlyDragging = false;
+        draggedPiece = null;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPuzzleToolbar();
+      loadPuzzle(1);
     });
 
     // --- إعدادات أداة الرسم والتلوين ---
